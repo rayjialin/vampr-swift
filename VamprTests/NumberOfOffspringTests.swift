@@ -28,12 +28,7 @@ class NumberOfOffspringTests: XCTestCase {
     rootVampire = Vampire(name: "original", yearConverted: 0)
   }
   
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-  
-  func test_addOffspring_ShouldAddVapiresAsOffspringOfTheParent() {
+  func test_numberOfOffspring_ShouldReturnCorrectNumberOfOffspring() {
     XCTAssertEqual(rootVampire.numberOfOffspring, 0)
     rootVampire.add(offspring: Vampire(name: "", yearConverted: 0))
     XCTAssertEqual(rootVampire.numberOfOffspring, 1)

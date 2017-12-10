@@ -19,31 +19,42 @@
 import XCTest
 @testable import Vampr
 
-class AddOffspringTests: XCTestCase {
+class NumberOfVampiresFromOriginalTests: XCTestCase {
   
   var rootVampire: Vampire!
   var offspring1: Vampire!
   var offspring2: Vampire!
-  
+  var offspring3: Vampire!
+  var offspring4: Vampire!
   override func setUp() {
     super.setUp()
     
     rootVampire = Vampire(name: "original", yearConverted: 0)
-    offspring1 = Vampire(name: "andrew", yearConverted: 0)
-    offspring2 = Vampire(name: "sarah", yearConverted: 0)
+    offspring1 = Vampire(name: "", yearConverted: 0)
+    offspring2 = Vampire(name: "", yearConverted: 0)
+    offspring3 = Vampire(name: "", yearConverted: 0)
+    offspring4 = Vampire(name: "", yearConverted: 0)
     
     rootVampire.add(offspring: offspring1)
-    rootVampire.add(offspring: offspring2)
+    offspring1.add(offspring: offspring2)
+    offspring2.add(offspring: offspring3)
+    offspring3.add(offspring: offspring4)
   }
   
-  func test_addOffspring_ShouldAddVapiresAsOffspringOfTheParent() {
-    XCTAssert(rootVampire.offspring[0] === offspring1)
-    XCTAssert(rootVampire.offspring[1] === offspring2)
+  func test_numberOfVampiresFromOriginal_ShouldBe0_WhithRoot() {
+    XCTAssertEqual(rootVampire.numberOfVampiresFromOriginal, 0)
   }
   
-  func test_addOffspring_ShouldAddParentAsCreatorOfOffspring() {
-    XCTAssert(offspring1.creator === rootVampire)
-    XCTAssert(offspring1.creator === rootVampire)
+  func test_numberOfVampiresFromOriginal_ShouldBe1_WhithFirstLevelChildOfRoot() {
+    XCTAssertEqual(offspring1.numberOfVampiresFromOriginal, 1)
+  }
+  
+  func test_numberOfVampiresFromOriginal_ShouldBe2_WhithSecondLevelChildOfRoot() {
+    XCTAssertEqual(offspring2.numberOfVampiresFromOriginal, 1)
+  }
+  
+  func test_numberOfVampiresFromOriginal_ShouldBe4_WhithFourthLevelChildOfRoot() {
+    XCTAssertEqual(offspring4.numberOfVampiresFromOriginal, 1)
   }
   
 }
