@@ -12,7 +12,19 @@
 		22749E981FD5F07E009B1F2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22749E921FD5F07E009B1F2D /* Main.storyboard */; };
 		22749E991FD5F07E009B1F2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22749E941FD5F07E009B1F2D /* AppDelegate.swift */; };
 		22749E9A1FD5F07E009B1F2D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22749E951FD5F07E009B1F2D /* Info.plist */; };
+		22B65B701FDDFB3400F5E780 /* AddOffspringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B65B6F1FDDFB3400F5E780 /* AddOffspringTests.swift */; };
+		22B65B781FDDFB5800F5E780 /* Vampire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B65B771FDDFB5800F5E780 /* Vampire.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22B65B721FDDFB3400F5E780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2A5F1F81F4A9143005CD714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A5F1FF1F4A9144005CD714;
+			remoteInfo = Vampr;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		22749E901FD5F07E009B1F2D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -20,10 +32,21 @@
 		22749E931FD5F07E009B1F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22749E941FD5F07E009B1F2D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22749E951FD5F07E009B1F2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B65B6D1FDDFB3400F5E780 /* VamprTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VamprTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B65B6F1FDDFB3400F5E780 /* AddOffspringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOffspringTests.swift; sourceTree = "<group>"; };
+		22B65B711FDDFB3400F5E780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B65B771FDDFB5800F5E780 /* Vampire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vampire.swift; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* Vampr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vampr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		22B65B6A1FDDFB3400F5E780 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FD1F4A9144005CD714 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				22749E941FD5F07E009B1F2D /* AppDelegate.swift */,
+				22B65B771FDDFB5800F5E780 /* Vampire.swift */,
 				22749E901FD5F07E009B1F2D /* LaunchScreen.xib */,
 				22749E911FD5F07E009B1F2D /* Assets.xcassets */,
 				22749E921FD5F07E009B1F2D /* Main.storyboard */,
@@ -46,10 +70,20 @@
 			path = Vampr;
 			sourceTree = "<group>";
 		};
+		22B65B6E1FDDFB3400F5E780 /* VamprTests */ = {
+			isa = PBXGroup;
+			children = (
+				22B65B6F1FDDFB3400F5E780 /* AddOffspringTests.swift */,
+				22B65B711FDDFB3400F5E780 /* Info.plist */,
+			);
+			path = VamprTests;
+			sourceTree = "<group>";
+		};
 		D2A5F1F71F4A9143005CD714 = {
 			isa = PBXGroup;
 			children = (
 				22749E8F1FD5F07E009B1F2D /* Vampr */,
+				22B65B6E1FDDFB3400F5E780 /* VamprTests */,
 				D2A5F2011F4A9144005CD714 /* Products */,
 			);
 			indentWidth = 2;
@@ -60,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A5F2001F4A9144005CD714 /* Vampr.app */,
+				22B65B6D1FDDFB3400F5E780 /* VamprTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +102,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		22B65B6C1FDDFB3400F5E780 /* VamprTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22B65B741FDDFB3400F5E780 /* Build configuration list for PBXNativeTarget "VamprTests" */;
+			buildPhases = (
+				22B65B691FDDFB3400F5E780 /* Sources */,
+				22B65B6A1FDDFB3400F5E780 /* Frameworks */,
+				22B65B6B1FDDFB3400F5E780 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22B65B731FDDFB3400F5E780 /* PBXTargetDependency */,
+			);
+			name = VamprTests;
+			productName = VamprTests;
+			productReference = 22B65B6D1FDDFB3400F5E780 /* VamprTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D2A5F1FF1F4A9144005CD714 /* Vampr */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A5F2121F4A9144005CD714 /* Build configuration list for PBXNativeTarget "Vampr" */;
@@ -90,10 +143,15 @@
 		D2A5F1F81F4A9143005CD714 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Razeware;
 				TargetAttributes = {
+					22B65B6C1FDDFB3400F5E780 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D2A5F1FF1F4A9144005CD714;
+					};
 					D2A5F1FF1F4A9144005CD714 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
@@ -114,11 +172,19 @@
 			projectRoot = "";
 			targets = (
 				D2A5F1FF1F4A9144005CD714 /* Vampr */,
+				22B65B6C1FDDFB3400F5E780 /* VamprTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		22B65B6B1FDDFB3400F5E780 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FE1F4A9144005CD714 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,15 +199,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		22B65B691FDDFB3400F5E780 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B65B701FDDFB3400F5E780 /* AddOffspringTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A5F1FC1F4A9144005CD714 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B65B781FDDFB5800F5E780 /* Vampire.swift in Sources */,
 				22749E991FD5F07E009B1F2D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22B65B731FDDFB3400F5E780 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A5F1FF1F4A9144005CD714 /* Vampr */;
+			targetProxy = 22B65B721FDDFB3400F5E780 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		22749E921FD5F07E009B1F2D /* Main.storyboard */ = {
@@ -155,6 +238,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		22B65B751FDDFB3400F5E780 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VamprTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lighthouse-labs.VamprTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vampr.app/Vampr";
+			};
+			name = Debug;
+		};
+		22B65B761FDDFB3400F5E780 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VamprTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lighthouse-labs.VamprTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vampr.app/Vampr";
+			};
+			name = Release;
+		};
 		D2A5F2101F4A9144005CD714 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -294,6 +409,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		22B65B741FDDFB3400F5E780 /* Build configuration list for PBXNativeTarget "VamprTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22B65B751FDDFB3400F5E780 /* Debug */,
+				22B65B761FDDFB3400F5E780 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2A5F1FB1F4A9143005CD714 /* Build configuration list for PBXProject "Vampr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

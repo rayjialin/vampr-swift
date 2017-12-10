@@ -16,42 +16,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Vampr
 
-class Vampire {
+class AddOffspringTests: XCTestCase {
   
-  var name: String
-  var yearConverted: Int
-  var offspring: [Vampire] = []
-  var creator: Vampire?
+  var rootVampire: Vampire!
+  var offspring1: Vampire!
+  var offspring2: Vampire!
   
-  init(name: String, yearConverted: Int) {
-    self.name = name
-    self.yearConverted = yearConverted
+  override func setUp() {
+    super.setUp()
+    
+    rootVampire = Vampire(name: "original", yearConverted: 0)
+    offspring1 = Vampire(name: "andrew", yearConverted: 0)
+    offspring2 = Vampire(name: "sarah", yearConverted: 0)
+    
+    rootVampire.add(offspring: offspring1)
+    rootVampire.add(offspring: offspring2)
   }
   
-  /// Adds the vampire as an offspring of this vampire
-  func add(offspring: Vampire) {
-  
+  override func tearDown() {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    super.tearDown()
   }
   
-  /// The total number of vampires created by that vampire
-  var numberOfOffspring: Int {
-    return -1
+  func test_addOffspring_ShouldAddVapiresAsOffspringOfTheParent() {
+    XCTAssert(rootVampire.offspring[0] === offspring1)
+    XCTAssert(rootVampire.offspring[1] === offspring2)
   }
   
-  /// Returns the number of vampires away from the original vampire this vampire is
-  var numberOfVampiresFromOriginal: Int {
-    return -1
+  func test_addOffspring_ShouldAddParentAsCreatorOfOffspring() {
+    XCTAssert(offspring1.creator === rootVampire)
+    XCTAssert(offspring1.creator === rootVampire)
   }
   
-  /// Returns true if this vampire is more senior than the other vampire. (Who is closer to the original vampire)
-  func isMoreSenior(than vampire: Vampire) -> Bool {
-    return false
-  }
-  
-  /// Returns the closest common ancestor of two vampires.
-  func closestCommonAncestor(vampire: Vampire) -> Vampire {
-    return vampire
-  }
 }
