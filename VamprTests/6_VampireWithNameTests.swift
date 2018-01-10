@@ -40,14 +40,16 @@ class VampireWithNameTests: XCTestCase {
     offspring.3.add(offspring: offspring.4)
   }
   
-  func test_closestCommonAncestor_ShouldBeRoot_WithAnyVampireAndRootVampire() {
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.0) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.1) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.2) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.3) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.4) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.5) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.6) === rootVampire)
-    XCTAssert(rootVampire.closestCommonAncestor(vampire: offspring.7) === rootVampire)
+  func test_vampireWithName_ShouldReturnTheVampireWithAGivenName_WhenAVampireExistsWithThatName() {
+    XCTAssert(rootVampire.vampire(withName: rootVampire.name) === rootVampire)
+    XCTAssert(rootVampire.vampire(withName: offspring.0.name) === offspring.0)
+    XCTAssert(rootVampire.vampire(withName: offspring.1.name) === offspring.1)
+    XCTAssert(rootVampire.vampire(withName: offspring.4.name) === offspring.4)
+    XCTAssert(offspring.2.vampire(withName: offspring.4.name) === offspring.4)
+  }
+  
+  func test_vampireWithName_ShouldReturnNil_WhenAVampireDoesNotExistsWithThatName() {
+    XCTAssertNil(rootVampire.vampire(withName: ""))
+    XCTAssertNil(offspring.1.vampire(withName: offspring.4.name))
   }
 }
