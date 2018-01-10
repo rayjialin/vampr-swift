@@ -55,8 +55,8 @@ class Vampire {
   // MARK: Tree traversal methods
   
   /// Returns the vampire object with that name, or null if no vampire exists with that name
-  func vampire(withName name: String) -> Vampire {
-    return Vampire(name: "", yearConverted: 0)
+  func vampire(withName name: String) -> Vampire? {
+    return nil
   }
   
   /// Returns the total number of vampires that exist
