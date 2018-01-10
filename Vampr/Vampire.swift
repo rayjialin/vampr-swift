@@ -30,6 +30,8 @@ class Vampire {
     self.yearConverted = yearConverted
   }
   
+  // MARK: Simple tree methods
+  
   /// Adds the vampire as an offspring of this vampire
   func add(offspring: Vampire) {
   
@@ -50,7 +52,16 @@ class Vampire {
     return false
   }
   
-  /// Returns the closest common ancestor of two vampires.
+  // MARK: Stretch 
+  
+  /**
+    Returns the closest common ancestor of two vampires.
+    The closest common anscestor should be the more senior vampire if a direct ancestor is used.
+ 
+    - Example:
+      * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
+      * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
+   */
   func closestCommonAncestor(vampire: Vampire) -> Vampire {
     return vampire
   }
