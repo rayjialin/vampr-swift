@@ -17,30 +17,50 @@
 // THE SOFTWARE.
 
 import XCTest
+@testable import Vampr
 
-class __AllMillennialVampiresTests: XCTestCase {
+class AllMillennialVampiresTests: XCTestCase {
         
-    override func setUp() {
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+  var rootVampire: Vampire!
+  var offspring: (Vampire, Vampire, Vampire, Vampire, Vampire, Vampire, Vampire, Vampire)!
+  override func setUp() {
+    super.setUp()
+    
+    rootVampire = Vampire(name: "original", yearConverted: 0)
+    offspring.0 = Vampire(name: "a", yearConverted: 1000)
+    offspring.1 = Vampire(name: "b", yearConverted: 900)
+    offspring.2 = Vampire(name: "c", yearConverted: 1400)
+    offspring.3 = Vampire(name: "d", yearConverted: 1890)
+    offspring.4 = Vampire(name: "e", yearConverted: 1990)
+    offspring.5 = Vampire(name: "f", yearConverted: 2000)
+    offspring.6 = Vampire(name: "g", yearConverted: 2010)
+    offspring.7 = Vampire(name: "h", yearConverted: 2017)
+    
+    rootVampire.add(offspring: offspring.0)
+    rootVampire.add(offspring: offspring.1)
+    rootVampire.add(offspring: offspring.2)
+    offspring.2.add(offspring: offspring.3)
+    offspring.2.add(offspring: offspring.4)
+    offspring.4.add(offspring: offspring.5)
+    offspring.5.add(offspring: offspring.6)
+    offspring.1.add(offspring: offspring.7)
+  }
+  
+  func test_allMillennialVampires_ShouldReturnAnArrayOfAlllVampiresConvertedAfter1980() {
+    let millennials = rootVampire.allMillennialVampires
+    
+    func makeVampireIsEqualTo(_ vampire: Vampire) -> ((Vampire) -> Bool) {
+      func vampireIsEqualTo(_ compareVampire: Vampire) -> Bool {
+        return vampire === compareVampire
+      }
+      return vampireIsEqualTo
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    XCTAssertEqual(millennials.count, 4)
+    XCTAssert(millennials.contains(where: makeVampireIsEqualTo(offspring.4)))
+    XCTAssert(millennials.contains(where: makeVampireIsEqualTo(offspring.5)))
+    XCTAssert(millennials.contains(where: makeVampireIsEqualTo(offspring.6)))
+    XCTAssert(millennials.contains(where: makeVampireIsEqualTo(offspring.7)))
+  }
     
 }
