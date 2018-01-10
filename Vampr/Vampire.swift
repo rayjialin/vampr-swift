@@ -65,7 +65,7 @@ class Vampire {
   }
   
   /// Returns an array of all the vampires that were converted after 1980
-  var allMillennialVampire: [Vampire] {
+  var allMillennialVampires: [Vampire] {
     return []
   }
   
