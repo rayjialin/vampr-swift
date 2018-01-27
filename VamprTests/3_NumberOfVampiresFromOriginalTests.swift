@@ -50,11 +50,11 @@ class NumberOfVampiresFromOriginalTests: XCTestCase {
   }
   
   func test_numberOfVampiresFromOriginal_ShouldBe2_WhithSecondLevelChildOfRoot() {
-    XCTAssertEqual(offspring2.numberOfVampiresFromOriginal, 1)
+    XCTAssertEqual(offspring2.numberOfVampiresFromOriginal, 2)
   }
   
   func test_numberOfVampiresFromOriginal_ShouldBe4_WhithFourthLevelChildOfRoot() {
-    XCTAssertEqual(offspring4.numberOfVampiresFromOriginal, 1)
+    XCTAssertEqual(offspring4.numberOfVampiresFromOriginal, 3)
   }
   
 }
