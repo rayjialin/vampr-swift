@@ -27,14 +27,15 @@ class AllMillennialVampiresTests: XCTestCase {
     super.setUp()
     
     rootVampire = Vampire(name: "original", yearConverted: 0)
-    offspring.0 = Vampire(name: "a", yearConverted: 1000)
-    offspring.1 = Vampire(name: "b", yearConverted: 900)
-    offspring.2 = Vampire(name: "c", yearConverted: 1400)
-    offspring.3 = Vampire(name: "d", yearConverted: 1890)
-    offspring.4 = Vampire(name: "e", yearConverted: 1990)
-    offspring.5 = Vampire(name: "f", yearConverted: 2000)
-    offspring.6 = Vampire(name: "g", yearConverted: 2010)
-    offspring.7 = Vampire(name: "h", yearConverted: 2017)
+    offspring = (
+      Vampire(name: "a", yearConverted: 1000),
+      Vampire(name: "b", yearConverted: 900),
+      Vampire(name: "c", yearConverted: 1400),
+      Vampire(name: "d", yearConverted: 1890),
+      Vampire(name: "e", yearConverted: 1990),
+      Vampire(name: "f", yearConverted: 2000),
+      Vampire(name: "g", yearConverted: 2010),
+      Vampire(name: "h", yearConverted: 2017))
     
     rootVampire.add(offspring: offspring.0)
     rootVampire.add(offspring: offspring.1)

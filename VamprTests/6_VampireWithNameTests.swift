@@ -27,11 +27,12 @@ class VampireWithNameTests: XCTestCase {
     super.setUp()
     
     rootVampire = Vampire(name: "original", yearConverted: 0)
-    offspring.0 = Vampire(name: "andrew", yearConverted: 0)
-    offspring.1 = Vampire(name: "sarah", yearConverted: 0)
-    offspring.2 = Vampire(name: "c", yearConverted: 0)
-    offspring.3 = Vampire(name: "d", yearConverted: 0)
-    offspring.4 = Vampire(name: "e", yearConverted: 0)
+    offspring = (
+      Vampire(name: "andrew", yearConverted: 0),
+      Vampire(name: "sarah", yearConverted: 0),
+      Vampire(name: "c", yearConverted: 0),
+      Vampire(name: "d", yearConverted: 0),
+      Vampire(name: "e", yearConverted: 0))
     
     rootVampire.add(offspring: offspring.0)
     offspring.0.add(offspring: offspring.1)
