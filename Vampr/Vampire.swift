@@ -56,12 +56,33 @@ class Vampire {
   
   /// Returns the vampire object with that name, or null if no vampire exists with that name
   func vampire(withName name: String) -> Vampire? {
+      // recursive case
+    if self.name != name{
+      for vamp in self.offspring{
+        return vamp.vampire(withName: name)
+        }
+    }else{
+        return self
+      
+    }
+    
     return nil
   }
   
   /// Returns the total number of vampires that exist
   var totalDescendent: Int {
-    return -1
+    // recursive case
+    var totalDescendent = 0
+    if self.offspring.count == 0{
+      return
+    }
+    
+    for vamp in self.offspring {
+      totalDescendent += vamp.totalDescendent
+    }
+    
+    // base case
+    
   }
   
   /// Returns an array of all the vampires that were converted after 1980
