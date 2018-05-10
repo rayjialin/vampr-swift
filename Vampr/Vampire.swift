@@ -75,6 +75,31 @@ class Vampire {
    * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
    */
   func closestCommonAncestor(vampire: Vampire) -> Vampire {
+    
+    var vampA: Vampire? = self
+    var vampB: Vampire? = vampire
+    
+    while vampA != nil{
+      vampB = vampire
+      while vampB != nil{
+        if vampA === vampB{
+          return vampA!
+        }
+        
+        if let vampBCreator = vampB!.creator{
+        vampB = vampBCreator
+        }else {
+          vampB = nil
+        }
+        
+      }
+      if let vampACreator = vampA!.creator {
+      vampA = vampACreator
+      }else {
+        vampA = nil
+      }
+    }
+    
     return self
   }
   
