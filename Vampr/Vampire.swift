@@ -34,35 +34,107 @@ class Vampire {
   
   /// Adds the vampire as an offspring of this vampire
   func add(offspring: Vampire) {
-  
+    self.offspring.append(offspring)
+    offspring.creator = self
   }
   
   /// The total number of vampires created by that vampire
   var numberOfOffspring: Int {
-    return -1
+    return sumAllOffSpringVampr(self.offspring)
   }
   
   /// Returns the number of vampires away from the original vampire this vampire is
   var numberOfVampiresFromOriginal: Int {
-    return -1
+    var numberOfAncestors = 0
+    var currentVampire = self
+    
+    while true{
+      guard let vampire = currentVampire.creator else {
+        break
+      }
+      
+      currentVampire = vampire
+      numberOfAncestors += 1
+    }
+    return numberOfAncestors
   }
   
   /// Returns true if this vampire is more senior than the other vampire. (Who is closer to the original vampire)
   func isMoreSenior(than vampire: Vampire) -> Bool {
-    return false
+    return self.numberOfVampiresFromOriginal < vampire.numberOfVampiresFromOriginal ? true : false
   }
   
   // MARK: Stretch 
   
   /**
-    Returns the closest common ancestor of two vampires.
-    The closest common anscestor should be the more senior vampire if a direct ancestor is used.
- 
-    - Example:
-      * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
-      * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
+   Returns the closest common ancestor of two vampires.
+   The closest common anscestor should be the more senior vampire if a direct ancestor is used.
+   
+   - Example:
+   * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
+   * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
    */
   func closestCommonAncestor(vampire: Vampire) -> Vampire {
-    return vampire
+
+    if self.creator === nil {
+      return self
+    }
+
+    if vampire.creator === nil {
+      return vampire
+    }
+    
+    if self === vampire {
+      return self
+    }
+    
+    if self.creator === vampire.creator {
+      return self.creator!
+    }
+    
+    var ancestor = self
+    var ancestorParam = self
+//
+    if self.isMoreSenior(than: vampire){
+      ancestor = self
+      ancestorParam = vampire
+    }else {
+      ancestor = vampire
+      ancestorParam = self
+    }
+//
+    while ancestor.creator != nil {
+
+      while ancestorParam.creator != nil {
+        if ancestorParam === ancestor{
+          return ancestor
+        }
+
+        if ancestorParam.creator === ancestor {
+          return ancestor
+        }
+
+        ancestorParam = ancestorParam.creator!
+      }
+    }
+    
+    return ancestor.creator!
   }
+  
+  // recursion to get all offsprings
+  func sumAllOffSpringVampr(_ vampires: [Vampire]) -> Int{
+    var totalOffSpring = 0
+    for vampire in vampires{
+      // recursive case
+      if vampire.offspring.count > 0 {
+        totalOffSpring += sumAllOffSpringVampr(vampire.offspring)
+      }else {
+        // base case
+        totalOffSpring += 1
+      }
+    }
+    return totalOffSpring
+  }
+  
+  
 }
