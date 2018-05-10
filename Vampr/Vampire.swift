@@ -75,50 +75,7 @@ class Vampire {
    * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
    */
   func closestCommonAncestor(vampire: Vampire) -> Vampire {
-
-    if self.creator === nil {
-      return self
-    }
-
-    if vampire.creator === nil {
-      return vampire
-    }
-    
-    if self === vampire {
-      return self
-    }
-    
-    if self.creator === vampire.creator {
-      return self.creator!
-    }
-    
-    var ancestor = self
-    var ancestorParam = self
-//
-    if self.isMoreSenior(than: vampire){
-      ancestor = self
-      ancestorParam = vampire
-    }else {
-      ancestor = vampire
-      ancestorParam = self
-    }
-//
-    while ancestor.creator != nil {
-
-      while ancestorParam.creator != nil {
-        if ancestorParam === ancestor{
-          return ancestor
-        }
-
-        if ancestorParam.creator === ancestor {
-          return ancestor
-        }
-
-        ancestorParam = ancestorParam.creator!
-      }
-    }
-    
-    return ancestor.creator!
+    return self
   }
   
   // recursion to get all offsprings
