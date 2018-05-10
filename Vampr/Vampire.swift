@@ -34,73 +34,106 @@ class Vampire {
   
   /// Adds the vampire as an offspring of this vampire
   func add(offspring: Vampire) {
-  
+    self.offspring.append(offspring)
+    offspring.creator = self
   }
   
   /// The total number of vampires created by that vampire
   var numberOfOffspring: Int {
-    return -1
+    return sumAllOffSpringVampr(self.offspring)
   }
   
   /// Returns the number of vampires away from the original vampire this vampire is
   var numberOfVampiresFromOriginal: Int {
-    return -1
+    var numberOfAncestors = 0
+    var currentVampire = self
+    
+    while true{
+      guard let vampire = currentVampire.creator else {
+        break
+      }
+      
+      currentVampire = vampire
+      numberOfAncestors += 1
+    }
+    return numberOfAncestors
   }
   
   /// Returns true if this vampire is more senior than the other vampire. (Who is closer to the original vampire)
   func isMoreSenior(than vampire: Vampire) -> Bool {
-    return false
+    return self.numberOfVampiresFromOriginal < vampire.numberOfVampiresFromOriginal ? true : false
   }
   
   // MARK: Tree traversal methods
   
   /// Returns the vampire object with that name, or null if no vampire exists with that name
   func vampire(withName name: String) -> Vampire? {
-      // recursive case
-    if self.name != name{
-      for vamp in self.offspring{
-        return vamp.vampire(withName: name)
-        }
-    }else{
-        return self
-      
+
+    if self.name == name{
+      return self
     }
     
+    for vamp in self.offspring{
+      if let vampire = vamp.vampire(withName: name){
+        if vampire.name == name{
+          return vampire
+        }
+      }
+      
+    }
     return nil
   }
   
   /// Returns the total number of vampires that exist
   var totalDescendent: Int {
-    // recursive case
-    var totalDescendent = 0
-    if self.offspring.count == 0{
-      return
-    }
-    
-    for vamp in self.offspring {
-      totalDescendent += vamp.totalDescendent
-    }
-    
-    // base case
-    
+    return sumAllOffSpringVampr(self.offspring)
   }
   
   /// Returns an array of all the vampires that were converted after 1980
   var allMillennialVampires: [Vampire] {
-    return []
+    return sumOfMillennialVamp(self.offspring)
   }
   
   // MARK: Stretch 
   
   /**
-    Returns the closest common ancestor of two vampires.
-    The closest common anscestor should be the more senior vampire if a direct ancestor is used.
- 
-    - Example:
-      * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
-      * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
+   Returns the closest common ancestor of two vampires.
+   The closest common anscestor should be the more senior vampire if a direct ancestor is used.
+   
+   - Example:
+   * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
+   * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
    */
   func closestCommonAncestor(vampire: Vampire) -> Vampire {
     return vampire
   }
+  
+  
+  // recursion to get all offsprings
+  func sumAllOffSpringVampr(_ vampires: [Vampire]) -> Int{
+    var totalOffSpring = 0
+    for vampire in vampires{
+      totalOffSpring += 1
+      // recursive case
+      if vampire.offspring.count > 0 {
+        totalOffSpring += sumAllOffSpringVampr(vampire.offspring)
+      }
+    }
+    return totalOffSpring
+  }
+  
+  func sumOfMillennialVamp(_ vampires: [Vampire]) -> [Vampire]{
+    var totalVamp = [Vampire]()
+    
+    for vampire in vampires{
+      if vampire.yearConverted >= 1980{
+        totalVamp.append(vampire)
+      }
+      if vampire.offspring.count > 0 {
+        totalVamp += sumOfMillennialVamp(vampire.offspring)
+      }
+    }
+    return totalVamp
+  }
+  
 }
